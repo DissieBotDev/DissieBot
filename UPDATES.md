@@ -6,7 +6,7 @@ This Versions become Feature Updates:
 
 | Version | Supported          |
 | ------- | ------------------ |
-| 0.0.0 | :x:                |
+| 0.0.x | :x:                |
 
 ## Security Updates
 
