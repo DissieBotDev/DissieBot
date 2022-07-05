@@ -33,7 +33,7 @@ VERSION = config["VERSION"]
 VERSIONSDATUM = config["VERSIONSDATUM"]
 AUTOR = config["AUTOR"]
 BOTNAME = config["BOTNAME"]
-#SERVERNAME = config["SERVERNAME"]
+FOOTER_ICON_URL = config["FOOTER_ICON_URL"]
 
 SOURCE_CODE_VERSION = githubversionjson["SOURCE_CODE_VERSION"]
 
@@ -74,7 +74,7 @@ async def on_ready():
     embedstart = discord.Embed(title="Bot ist online", color=0x00ff00)
     embedstart.add_field(name="Bot wurde gestartet", value=" ⠀ ", inline=False)
     embedstart.timestamp = timestamp
-    embedstart.set_footer(text=f'{BOTNAME} von {AUTOR}', icon_url="https://cdn.discordapp.com/attachments/993148355586830416/993488513070796850/Dissie_-_Logo_-_Transparent.png")
+    embedstart.set_footer(text=f'{BOTNAME} von {AUTOR}', icon_url=f'{FOOTER_ICON_URL}')
     await channel.send(embed=embedstart)
 
 start_time = time.time()
@@ -123,7 +123,7 @@ async def hallo(ctx):
     embedhello.set_thumbnail(url="https://cdn.pixabay.com/photo/2016/10/26/13/09/bird-1771435_960_720.png")
     embedhello.add_field(name="Moin", value="Wie geht es dir?", inline=True)
     embedhello.timestamp = timestamp
-    embedhello.set_footer(text=f'{BOTNAME} von {AUTOR}', icon_url="https://cdn.discordapp.com/attachments/993148355586830416/993488513070796850/Dissie_-_Logo_-_Transparent.png")
+    embedhello.set_footer(text=f'{BOTNAME} von {AUTOR}', icon_url=f'{FOOTER_ICON_URL}')
     await ctx.respond(embed=embedhello)
 
 @bot.slash_command(name="ping", aliases=["pong"], discription="Zeigt die Reaktionsdauer an")
@@ -132,14 +132,14 @@ async def ping(ctx):
     embedlade = discord.Embed(title="Lade", color=0xffff00)
     embedlade.add_field(name="Lade...", value=" ⠀ ", inline=True)
     embedlade.timestamp = timestamp
-    embedlade.set_footer(text=f'{BOTNAME} von {AUTOR}', icon_url="https://cdn.discordapp.com/attachments/993148355586830416/993488513070796850/Dissie_-_Logo_-_Transparent.png")
+    embedlade.set_footer(text=f'{BOTNAME} von {AUTOR}', icon_url=f'{FOOTER_ICON_URL}')
     await ctx.send(embed=embedlade, delete_after=0.5)
     async with ctx.typing():
         await asyncio.sleep(0.5)
     embedping = discord.Embed(title="Pong", color=0x00ff00)
     embedping.add_field(name=f'Mein Ping ist {bot_latency}ms  :ping_pong:', value='\u200b', inline=True)
     embedping.timestamp = timestamp
-    embedping.set_footer(text=f'{BOTNAME} von {AUTOR}', icon_url="https://cdn.discordapp.com/attachments/993148355586830416/993488513070796850/Dissie_-_Logo_-_Transparent.png")
+    embedping.set_footer(text=f'{BOTNAME} von {AUTOR}', icon_url=f'{FOOTER_ICON_URL}')
     await ctx.respond(embed=embedping)
 
 @bot.slash_command(name="userinfo", aliases=["ui", "UserInfo", "Userinfo", "UI", "Ui", "uI"], discription="Informationen über den User")
@@ -147,7 +147,7 @@ async def userinfo(ctx, user: Option(discord.User, description="User über den d
     embedlade = discord.Embed(title="Lade", color=0xffff00)
     embedlade.add_field(name="Lade...", value=" ⠀ ", inline=True)
     embedlade.timestamp = timestamp
-    embedlade.set_footer(text=f'{BOTNAME} von {AUTOR}', icon_url="https://cdn.discordapp.com/attachments/993148355586830416/993488513070796850/Dissie_-_Logo_-_Transparent.png")
+    embedlade.set_footer(text=f'{BOTNAME} von {AUTOR}', icon_url=f'{FOOTER_ICON_URL}')
     await ctx.send(embed=embedlade, delete_after=1)
     async with ctx.typing():
         await asyncio.sleep(1)
@@ -161,7 +161,7 @@ async def userinfo(ctx, user: Option(discord.User, description="User über den d
     embeduserinfo.add_field(name="Rolle", value=user.roles, inline=False)
     embeduserinfo.add_field(name="Erstellt am", value=user.created_at, inline=False)
     embeduserinfo.timestamp = timestamp
-    embeduserinfo.set_footer(text=f'{BOTNAME} von {AUTOR}', icon_url="https://cdn.discordapp.com/attachments/993148355586830416/993488513070796850/Dissie_-_Logo_-_Transparent.png")
+    embeduserinfo.set_footer(text=f'{BOTNAME} von {AUTOR}', icon_url=f'{FOOTER_ICON_URL}')
     await ctx.respond(embed=embeduserinfo)
 
 @bot.slash_command(name="info", aliases=["i", "Info", "I"], discription="Informationen über den Bot")
@@ -173,7 +173,7 @@ async def info(ctx):
     embedinfo.add_field(name="Version:", value=f"{VERSION} vom {VERSIONSDATUM}\n", inline=False)
     embedinfo.add_field(name="Autor:", value=f"{AUTOR} \n", inline=False)
     embedinfo.timestamp = timestamp
-    embedinfo.set_footer(text=f'{BOTNAME} von {AUTOR}', icon_url="https://cdn.discordapp.com/attachments/993148355586830416/993488513070796850/Dissie_-_Logo_-_Transparent.png")
+    embedinfo.set_footer(text=f'{BOTNAME} von {AUTOR}', icon_url=f'{FOOTER_ICON_URL}')
     await ctx.respond(embed=embedinfo, view=view)
 
 @bot.slash_command(name="source", aliases=[], discription="Source Code des Bots")
@@ -182,7 +182,7 @@ async def source(ctx):
     embedsource.add_field(name="Code:", value=f"https://github.com/DissieBotDev/DissieBot", inline=False)
     embedsource.add_field(name="Source Code Version:", value=f"{SOURCE_CODE_VERSION} \n", inline=False)
     embedsource.timestamp = timestamp
-    embedsource.set_footer(text=f'{BOTNAME} von {AUTOR}', icon_url="https://cdn.discordapp.com/attachments/993148355586830416/993488513070796850/Dissie_-_Logo_-_Transparent.png")
+    embedsource.set_footer(text=f'{BOTNAME} von {AUTOR}', icon_url=f'{FOOTER_ICON_URL}')
     await ctx.respond(embed=embedsource)
 
 @bot.slash_command(name="print", aliases=["p", "Print", "P"], discription="Printent den übergebenen Wert aus")
@@ -194,7 +194,7 @@ async def embedprint(ctx, color: Option(str, description="Hex-Code der Farbe", r
     embedprint = discord.Embed(title=title, color=color)
     embedprint.add_field(name=text, value=" ⠀ ", inline=False)
     embedprint.timestamp = timestamp
-    embedprint.set_footer(text=f'{BOTNAME} von {AUTOR}', icon_url="https://cdn.discordapp.com/attachments/993148355586830416/993488513070796850/Dissie_-_Logo_-_Transparent.png")
+    embedprint.set_footer(text=f'{BOTNAME} von {AUTOR}', icon_url=f'{FOOTER_ICON_URL}')
     await ctx.respond(embed=embedprint)
 
 @bot.slash_command(name="uptime", aliases=["ut", "Uptime", "UT"], discription="Zeigt die Uptime an")
@@ -205,7 +205,7 @@ async def uptime(ctx):
     embeduptime = discord.Embed(title="Uptime", color=0x00ff00)
     embeduptime.add_field(name="Uptime:", value=f"{UPTIME}", inline=False)
     embeduptime.timestamp = timestamp
-    embeduptime.set_footer(text=f'{BOTNAME} von {AUTOR}', icon_url="https://cdn.discordapp.com/attachments/993148355586830416/993488513070796850/Dissie_-_Logo_-_Transparent.png")
+    embeduptime.set_footer(text=f'{BOTNAME} von {AUTOR}', icon_url=f'{FOOTER_ICON_URL}')
     await ctx.respond(embed=embeduptime)
 
 @bot.slash_command(name="clear", aliases=["delete", "purge", "c"], discription="Löscht Nachrichten")
@@ -226,7 +226,7 @@ async def clear(ctx, amount: int=None):
     else:
         embedclear.add_field(name=f"Ich habe {amount} Nachrichten gelöscht!", value=" ⠀ ", inline=False)
         embedclear.timestamp = timestamp
-        embedclear.set_footer(text=f'{BOTNAME} von {AUTOR}', icon_url="https://cdn.discordapp.com/attachments/993148355586830416/993488513070796850/Dissie_-_Logo_-_Transparent.png")
+        embedclear.set_footer(text=f'{BOTNAME} von {AUTOR}', icon_url=f'{FOOTER_ICON_URL}')
     await ctx.respond(embed=embedclear, delete_after=5)
 
 @bot.slash_command(name="restart", aliases=["r", "R"], discription="Bot neustarten")
@@ -235,7 +235,7 @@ async def restart(ctx):
     embedrestart = discord.Embed(title="Neustart", color=0xff0000)
     embedrestart.add_field(name="Bot startet neu...", value="Ich bin gleich wieder erreichbar!", inline=True)
     embedrestart.timestamp = timestamp
-    embedrestart.set_footer(text=f'{BOTNAME} von {AUTOR}', icon_url="https://cdn.discordapp.com/attachments/993148355586830416/993488513070796850/Dissie_-_Logo_-_Transparent.png")
+    embedrestart.set_footer(text=f'{BOTNAME} von {AUTOR}', icon_url=f'{FOOTER_ICON_URL}')
     await ctx.respond(embed=embedrestart)
     await bot.change_presence(status=discord.Status.dnd)
     restart_bot()
@@ -271,8 +271,7 @@ async def stats(ctx):
     embedlade = discord.Embed(title="Lade", color=0xffff00)
     embedlade.add_field(name="Lade...", value=" ⠀ ", inline=True)
     embedlade.timestamp = timestamp
-    embedlade.set_footer(text=f'{BOTNAME} von {AUTOR}',
-                         icon_url="https://cdn.discordapp.com/attachments/993148355586830416/993488513070796850/Dissie_-_Logo_-_Transparent.png")
+    embedlade.set_footer(text=f'{BOTNAME} von {AUTOR}', icon_url=f'{FOOTER_ICON_URL}')
     await ctx.send(embed=embedlade, delete_after=1)
     cpuussage = psutil.cpu_percent(1)
     ramusage = psutil.virtual_memory().percent
@@ -287,7 +286,7 @@ async def stats(ctx):
     embedstats.add_field(name="RAM in Used", value=f'{ramused}/{ramtotal} MB', inline=False)
     embedstats.add_field(name="CPU Cores", value=f'{cpucores}', inline=False)
     embedstats.timestamp = timestamp
-    embedstats.set_footer(text=f'{BOTNAME} von {AUTOR}', icon_url="https://cdn.discordapp.com/attachments/993148355586830416/993488513070796850/Dissie_-_Logo_-_Transparent.png")
+    embedstats.set_footer(text=f'{BOTNAME} von {AUTOR}', icon_url=f'{FOOTER_ICON_URL}')
     await ctx.respond(embed=embedstats)
 
 @bot.slash_command(name="helpmod", aliases=["hilfemod", "Hilfemod", "hmod", "Hmod", "HM", "hm"], discription="Zeigt alle Befehle für Moderator und höher an")
@@ -300,7 +299,7 @@ async def helpmod(ctx):
     embedhelpmod.add_field(name="Restart", value=f"Befehl: `{PREFIX}restart` \n Startet den Bot neu \n", inline=True)
     embedhelpmod.add_field(name="Hilfe", value=f"Befehl: `{PREFIX}helpmod` \n Zeigt diese Hilfe an \n", inline=True)
     embedhelpmod.timestamp = timestamp
-    embedhelpmod.set_footer(text=f'{BOTNAME} von {AUTOR}', icon_url="https://cdn.discordapp.com/attachments/993148355586830416/993488513070796850/Dissie_-_Logo_-_Transparent.png")
+    embedhelpmod.set_footer(text=f'{BOTNAME} von {AUTOR}', icon_url=f'{FOOTER_ICON_URL}')
     await ctx.respond(embed=embedhelpmod)
 
 @bot.slash_command(name="help", aliases=["hilfe", "Hilfe", "h", "H"], discription="Zeigt alle Befehle an")
@@ -316,7 +315,7 @@ async def help(ctx):
     embedhelp.add_field(name="Source Code", value=f"Befehl: `/source` \n Source Code des Bots \n", inline=True)
     embedhelp.add_field(name="Hilfe", value=f"Befehl: `/help` \n Zeigt diese Hilfe an \n", inline=True)
     embedhelp.timestamp = timestamp
-    embedhelp.set_footer(text=f'{BOTNAME} von {AUTOR}', icon_url="https://cdn.discordapp.com/attachments/993148355586830416/993488513070796850/Dissie_-_Logo_-_Transparent.png")
+    embedhelp.set_footer(text=f'{BOTNAME} von {AUTOR}', icon_url=f'{FOOTER_ICON_URL}')
     await ctx.respond(embed=embedhelp)
 
 bot.run(TOKEN)
